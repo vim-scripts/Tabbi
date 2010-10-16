@@ -1,0 +1,15 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3280
+
+A simple vim plugin that aligns text separated with tabs or two or more whitespaces, so that each part starts in the same column as in the other lines. Just like a table, but without lines.
+Before:
+part one        part two     part three
+ another part one              another part two    another part three
+
+After:
+part one                  part two                 part three
+another part one    another part two   another part three
+
+(would be more observable with monospace type)
+
+
+Usage: to align the whole buffer, type :Tabbi, for aligning parts type e.g. :10,20Tabbi or use visual mode.
