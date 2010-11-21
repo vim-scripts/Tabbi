@@ -1,6 +1,7 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=3280
 
-A simple vim plugin that aligns text separated with tabs or two or more whitespaces, so that each part starts in the same column as in the other lines. Just like a table, but without lines.
+A simple vim plugin that aligns text separated with tabs or two or more whitespaces, so that each part starts in the same column as in the other lines. Similar as a table, but without lines.
+
 Before:
 part one        part two     part three
  another part one              another part two    another part three
@@ -9,7 +10,23 @@ After:
 part one                  part two                 part three
 another part one    another part two   another part three
 
-(would be more observable with monospace type)
-
-
 Usage: to align the whole buffer, type :Tabbi, for aligning parts type e.g. :10,20Tabbi or use visual mode.
+
+
+
+With the function Tabb(<pattern> [<trim> [,<separator]]) it is possible to format the selected lines.
+<pattern> is the pattern after which the lines should be formatted, §x or §x-y is replaced by the corresponding column. §- can be used to align the lines like the :Tabbi command.
+<trim> is a boolean specifying if the parts are trimmed (default 0).
+<sep> is a string or regular expression that specifies the string separating the line into columns. The default is tabs or two or more whitespaces.
+See the plugin file for more details.
+
+Before:
+part one, part two  ,part three , part four, rest
+one  , two , three
+
+-> select the lines and type :call Tabb("§2: §1§-§3-4", 1, ",")
+
+Result:
+part two: part one  - part three , part four
+two: one                  - three
+
